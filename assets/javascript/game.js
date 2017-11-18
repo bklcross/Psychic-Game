@@ -21,12 +21,12 @@ console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesL
 // the onkeyup event occurs when the user releases a key (on the keyboard).
 // document function writes into HTML page. when an HTML document is loaded into a web browser, it becomes a document object
 // all the different visitor's actions that a web page can respond to are called events, an event represents the precise moment when something happens like clicking on key
-document.onkeyup = function(events)
+document.onkeyup = function(event)
 	{
 		// toLowerCase makes all string into lower case
 		// The static String.fromCharCode() method returns a string created by using the specified sequence of Unicode values.
 		// the keyCode property returns the Unicode character code of the key that triggered the onkeyup event
-		var userGuess = String.fromCharCode(event.keycode).tolowerCase();
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 		// compare user's guess to guessesSoFar array
 		// user cannot pick same guess again
@@ -34,7 +34,7 @@ document.onkeyup = function(events)
 		// the indexOf() method returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex,Returns -1 if the value is not found
 		if (guessesSoFar.indexOf(userGuess) < 0 && allKeys.indexOf(userGuess) >= 0)
 		{
-			guessesSoFar[guessesSoFar.length] = userGuess;
+			guessesSoFar[guessesSoFar.length]=userGuess;
 			// decrease guessesLeft by 1
 			guessesLeft--;
 		}
@@ -46,9 +46,9 @@ document.onkeyup = function(events)
 		if (computerPicks == userGuess)
 		{
 			wins++;
-			console.log("You Win!)");
+			console.log("You win!");
 			guessesLeft = 9;
-			guessesSoFar = []
+			guessesSoFar = [];
 			computerPicks = allKeys[Math.floor(Math.random() * allKeys.length)];
 			console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerPicks);
 		}
@@ -57,12 +57,12 @@ document.onkeyup = function(events)
 		// reset guessesLeft to 9
 		// empty guessesSoFar array
 		// computerPicks new value
-		if (guessesLeft = 0)
+		if (guessesLeft == 0)
 		{
 			losses++;
-			console.log("You lose!)");
+			console.log("You Lose!");
 			guessesLeft = 9;
-			guessesSoFar = []
+			guessesSoFar = [];
 			computerPicks = allKeys[Math.floor(Math.random() * allKeys.length)];
 			console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerPicks);
 		}
@@ -73,4 +73,4 @@ document.onkeyup = function(events)
 		// document.querySelector () returns the first Element within the document that matches the specified selector, or group of selectors, or null if no matches are found
 		document.querySelector("#game").innerHTML = html;
 
-}
+	}
